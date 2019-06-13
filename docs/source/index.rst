@@ -10,6 +10,7 @@ Welcome to Gitlab CI Course Notes's documentation!
    :maxdepth: 2
    :caption: Contents:
 
+   0-about
    1-introduction
    2-ci-cd-workflow
 
