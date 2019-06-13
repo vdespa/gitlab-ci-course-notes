@@ -39,3 +39,7 @@ What is CI / CD?
     - ensure that every change is releasable
     - reduces the risk of a new deployment
     - delivers value much faster (changes are released more often)
+
+Short introduction to Node.js and npm
+-------------------------------------
+
