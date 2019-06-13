@@ -11,6 +11,7 @@ Welcome to Gitlab CI Course Notes's documentation!
    :caption: Contents:
 
    1-introduction
+   2-ci-cd-workflow
 
 
 Indices and tables
