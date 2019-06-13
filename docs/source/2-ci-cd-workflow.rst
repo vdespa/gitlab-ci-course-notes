@@ -43,3 +43,32 @@ What is CI / CD?
 Short introduction to Node.js and npm
 -------------------------------------
 
+- Node.js is a runtime environment for executing JavaScript
+- initially JavaScript was only executed within a browser
+- Node.js opened the posibility of running JavaScript without a browser.
+- we will need Node.js for running some tools
+- npm is the Node Package Manager
+- npm is used to install new tools / libraries
+
+Creating a new project
+----------------------
+
+- to build a simple static website we will use a tool called Gatsby
+- Gatsby runs on Node.js and we need to use npm to install it
+- first check that Node.js / npm are installed. 
+- open a terminal and run `node --version` and `npm --version`
+- in order to install simply gatsby, run `npm install -g gatsby-cli`
+- `-g` instructs npm to globally install the tool on your computer (so that you can use it from any folder)
+- to create a new website run `gatsby new static-website`
+- instead of static-website you can use any name you like
+- inspect the website by starting the local development server: `gatsby develop`
+- open the website from the address http://localhost:8000
+
+
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .
+
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .
+
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .
+
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .
