@@ -41,7 +41,7 @@ Your first pipeline in Gitlab CI
 - where is the build folder in the repository? 
 - nothing is automatically commmited to the repository
 
-YOUR NOTES:
+YOUR NOTES
 .............................................................
 
 .............................................................
@@ -69,7 +69,7 @@ Gitlab architecture
 - you can assign runners for specific projects
 
 
-YOUR NOTES:
+YOUR NOTES
 .............................................................
 
 .............................................................
@@ -95,7 +95,7 @@ Why Gitlab / Gitlab CI?
 - you need to try it on your own and see if it solves YOUR problems
 
 
-YOUR NOTES:
+YOUR NOTES
 .............................................................
 
 .............................................................
@@ -118,7 +118,7 @@ How much does Gitlab cost?
     - you need to take care of running gitlab (installation, updates, infrastructure, backups, ...)
     - have control over your data 
     
-YOUR NOTES:
+YOUR NOTES
 .............................................................
 
 .............................................................

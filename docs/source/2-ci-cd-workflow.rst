@@ -29,7 +29,7 @@ What is CI / CD?
     - the package must first go through all previous stages successfully
     - no manual intervention is required
 
-YOUR NOTES:
+YOUR NOTES
 .............................................................
 
 .............................................................
@@ -63,7 +63,7 @@ Short introduction to Node.js and npm
 - npm is the Node Package Manager
 - npm is used to install new tools / libraries
 
-YOUR NOTES:
+YOUR NOTES
 .............................................................
 
 .............................................................
@@ -86,7 +86,7 @@ Creating a new project
 - open the website from the address http://localhost:8000
 
 
-YOUR NOTES:
+YOUR NOTES
 .............................................................
 
 .............................................................
@@ -107,7 +107,7 @@ Building the project locally
 - to create a build from gatsby we use: `gatsby build`
 - the output is inside the public folder
 
-YOUR NOTES:
+YOUR NOTES
 .............................................................
 
 .............................................................
@@ -125,7 +125,7 @@ Short introduction to images and Docker
 - Gitlab breakes this pattern (see the architecture lecture as well) and works with Docker images which contain all the dependencies 
 - the Gitlab CI Runner with be using the specified Docker images
 
-YOUR NOTES:
+YOUR NOTES
 .............................................................
 
 .............................................................
@@ -154,7 +154,7 @@ Building the project using Gitlab CI
 - the output from the job is not saved anywhere, so we need to define an artifact
 - the artifact contains only the public folder (no other files)
 
-YOUR NOTES:
+YOUR NOTES
 .............................................................
 
 .............................................................
