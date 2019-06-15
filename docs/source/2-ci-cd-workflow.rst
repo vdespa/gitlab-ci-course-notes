@@ -30,7 +30,6 @@ What is CI / CD?
     - no manual intervention is required
 
 YOUR NOTES
-.............................................................
 
 .............................................................
 
@@ -199,6 +198,7 @@ Running jobs in parallel
 - pipes (|) are used to use the output from one command as the input for another
 - assigning two jobs to the same stage makes them run in parallel
 - when planning to run parallel jobs, you need to make sure there are no dependencies between them
+
 
 YOUR NOTES
 
