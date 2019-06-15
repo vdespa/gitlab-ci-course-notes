@@ -9,7 +9,7 @@ Your first pipeline in Gitlab CI
 
 - In this first video, we are going to create a very simple pipeline in Gitlab
 - what is a pipeline anyway?
-- analogy to an assembly line needed to build a car
+- the analogy to an assembly line needed to build a car
 - notice a few characteristics:
     - a series of steps that need to be done on a certain order
     - the steps are connected
@@ -30,16 +30,16 @@ Your first pipeline in Gitlab CI
 - create a free account at gitlab.com
 - create a new project. This will we a normal Git repository with nothing inside
 - new file .gitlab-ci.yaml
-- as in the car assembly, in a software pipeline we also have a series of steps or jobs what we need to perform
+- as in the car assembly, in a software pipeline, we also have a series of steps or jobs what we need to perform
 - always use spaces for indentation, not tabs.
-- after commiting, Gitlab will create the pipeline for us
+- after committing, Gitlab will create the pipeline for us
 - every time we make a change in the repository, the pipeline will start
 - GitLab will execute your scripts with the tool called GitLab Runner, which runs similarly to your terminal
 - Gitlab does not save anything unless told so
 - we will use artifacts to save the car.txt file
 - inspect final artifact
 - where is the build folder in the repository? 
-- nothing is automatically commmited to the repository
+- nothing is automatically committed to the repository
 
 YOUR NOTES
 .............................................................
@@ -61,7 +61,7 @@ Gitlab architecture
 - you need at least one Gitlab Server and one Runner
 - the server will provide the interface, store the repositories
 - the execution of the pipeline will be delegated to the Gitlab Runner
-- so the Gitlab Server does not actually run the jobs
+- so the Gitlab Server does not run the jobs
 - this allows for a very scalable architecture
 - see the Runners under the project Settings > CI/CD > Runners
 - we are using Shared Runners provided by Gitlab.com
@@ -86,10 +86,10 @@ YOUR NOTES
 Why Gitlab / Gitlab CI?
 -----------------------
 
-- Gitlab is a modern tool and Gitlab will probably will become one of the market leaders in the next years
+- Gitlab is a modern tool, and Gitlab will probably become one of the market leaders in the next years
 - Gitlab offers: 
     - a modern, scalable architecture
-    - you can eaisly work with Docker
+    - you can easily work with Docker
     - pipeline as a code
     - partially open source
 - you need to try it on your own and see if it solves YOUR problems
@@ -108,14 +108,14 @@ How much does Gitlab cost?
 
 - there are two ways to run Gitlab
     - gitlab.com
-    - self-hosted on your own architecture
+    - self-hosted on your server infrastructure
 - gitlab.com
     - has a free package
     - 2000 pipeline minutes
     - easy to start and try it out
 - self-hosted
-    - has a free options as well (Community Edition)
-    - you need to take care of running gitlab (installation, updates, infrastructure, backups, ...)
+    - has a free option as well (Community Edition)
+    - you need to take care of running Gitlab (installation, updates, infrastructure, backups, ...)
     - have control over your data 
     
 YOUR NOTES

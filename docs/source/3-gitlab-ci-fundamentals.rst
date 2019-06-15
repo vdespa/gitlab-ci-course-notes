@@ -2,11 +2,11 @@
 Gitlab CI Fundamentals
 **********************
 
-This section provides an overview of the most important features available in Gitlab CI.
+This section provides an overview of the most essential features available in Gitlab CI.
 
 Overview
 --------
-- we will go over the most important features in Gitlab
+- we will go over the most critical features in Gitlab
 - we will continue to improve the existing pipeline
     - execution speed
     - general Git workflow
@@ -23,17 +23,21 @@ YOUR NOTES
 
 .............................................................
 
+.............................................................
+
+.............................................................
+
 Predefined environment variables
 --------------------------------
 
-- let's try to add a version to your website, so that we know which version is currently deployed
+- let's try to add a version to your website so that we know which version is currently deployed
 - Gitlab comes with a large list of predefined variables
-- Full list at: https://docs.gitlab.com/ee/ci/variables/predefined_variables.html
+- Full list at https://docs.gitlab.com/ee/ci/variables/predefined_variables.html
 - Try the following in your pipeline to see how variables look like: `echo $CI_COMMIT_SHORT_SHA`
 - the dollar sign $ indicates that this is a variable
 - we will add a “version” to the website by replacing a marker
 - edit the file `src/pages/index.js`
-- we will use %%VERSION%% as a marker but you can use whatever you like
+- we will use %%VERSION%% as a marker, but you can use whatever you like
 - sed tool - stream editor
     - `sed -i 's/word1/word2/g'` inputfile 
     - s is for substitute
@@ -64,10 +68,10 @@ Pipeline triggers / Retrying failed jobs / Pipeline schedules
     - manually click on "Run Pipeline"
     - can select the branch
     - define variables
-- you can define a schedule when your pipeline should run
+- you can set a schedule when your pipeline should run
     - from your project to go CI/CD > Schedules
     - click on New Schedules
-    - you can use use one of the predefined options or define your own using the cron syntax
+    - you can use one of the predefined options or define your own using the cron syntax
     - you can wait for the pipeline to run or you can manually run it (in case you want to test the configuration)
     - you can run some jobs using the condition `only/except: - schedules`
     - see the full documentation at https://docs.gitlab.com/ee/user/project/pipelines/schedules.html
@@ -85,23 +89,23 @@ Using caches to optimize the build speed
 - you probably have noticed that some of the jobs do need a lot of time to run
 - especially the build job which needs to download some dependencies before it can run
 - if you are used with other more “traditional” CI servers like Jenkins, this extra time might seem like "forever"
-- this behaviour occurs because each job is started using a clean environment and only the code within Git is available
-- restassured, there is a solution for this and it is called "cache"
+- this behavior occurs because each job is started using a clean environment and only the code within Git is available
+- rest assured, there is a solution for this and it is called "cache"
 - using caches it is possible to speed up the execution of the job by instructing Gitlab to hold onto some files that we might need
 - What to cache?
     - ideal candidates for caching are the external project dependencies that are not stored in Git and that need to be downloaded
-    - in our case the project dependencies are defined in the packages.json file as npm dependencies
+    - in our case, the project dependencies are defined in the packages.json file as npm dependencies
     - the folder that npm uses is called `node_modules`
 - Usage in .gitlab-ci.yml:
 
-.. code-block-ext:: yaml
-    :whitespace:
+.. code-block:: yaml
+
     cache:
         key: ${CI_COMMIT_REF_SLUG}
         paths:
             - node_modules/
 
-- cache can be used locally (on a job level) or globally
+- the cache can be used locally (on a job level) or globally
 - you should notice that each job now has an overhead of downloading the cache (pull) and re-uploading the cache (push)
 - troubleshooting: Clearing caches
     - sometimes caches misbehave
@@ -134,11 +138,11 @@ Cache vs Artifacts
 - they might seem very similar but they are not the same thing and serve different purposes
 - artifacts
     - is usually the output from the build process (the package that we want to deploy)
-    - an artifact can be partial (if the final package is built accross multiple stages)
-    - artifacts can be used to pass data between jobs / stages
+    - an artifact can be partial (if the final package is built across multiple stages)
+    - artifacts can be used to pass data between jobs/stages
 - cache
     - should not be used for storing artifacts (even if technically possible)
-    - should only be used as a temporary storage for project dependencies
+    - should only be used as temporary storage for project dependencies
 - read the official documentation: https://docs.gitlab.com/ee/ci/caching/#cache-vs-artifacts
 
 YOUR NOTES
@@ -152,22 +156,24 @@ YOUR NOTES
 Environments
 ------------
 
-- currently we are directly deploying to master (which is not optimal)
+- currently, we are directly deploying to master (which is not optimal)
 - look at the CI/CD diagram we can notice that we are a few systems short
-- even if we do Continuous Deployment, we rarely want to directly deploy to the production system
-- adding a pre-production or testing stage and running some tests there is a good approach
+- even if we do Continuous Deployment, we rarely want to deploy to the production system directly
+- adding a pre-production or testing stage and running some tests there is a desirable approach
 - this allows us to run different kind of tests which require the whole system to respond (usually called integration or acceptance tests)
 - it also allows us to test the deployment process before doing this on the production system
-- our scenario is very simplistic but the same idea applies even to large and complex systems
+- our scenario is very simplistic, but the same idea applies even to large and complex systems
 - Gitlab has the concept of environments
-- environments allow you to control of the continuous deployment of your software
+- environments allow you to control the continuous deployment of your software
 - allows you to track your deployments, so that you know what is currently installed, on which systems and in which version
 - environments let you simply tag your jobs and in this way Gitlab knows what you are doing
 - you can do this inside a deployment job with:
 
-environment:
-  name: staging
-  url: http://somedomain.surge.sh
+.. code-block:: yaml
+
+    environment:
+    name: staging
+    url: http://somedomain.surge.sh
 
 
 - you can view your environments from your project page by going to Operations > Environments
@@ -188,10 +194,12 @@ Defining variables
 
 - it is not a good idea to duplicate information that can change (for example the domain name)
 - you can define variables in the jobs or globally
-- you can define a variable like this:
+- you can specify a variable like this:
 
-variables:
-  STAGING_DOMAIN: somedomain.surge.sh
+.. code-block:: yaml
+
+    variables:
+      STAGING_DOMAIN: somedomain.surge.sh
 
 - now if you need to change the domain name, you only have to do it in one place
 
@@ -212,7 +220,7 @@ Manual deployments / Manually triggering jobs
 - add `when:manual` to the jobs that need this
 - now you will need to view the pipeline and manually click on the "play" button associated with the job
 - if there are additional stages after the manual job, they will still be executed
-- if this is not desired, additionaly configure the manual job with: `allow_failure: false`
+- if this is not desired, additionally configure the manual job with: `allow_failure: false`
 - `allow_failure: false` combined with a manual job will set the pipeline in the status "Blocked"
 
 YOUR NOTES
@@ -232,22 +240,23 @@ Merge Requests: Using Branches
 - a broken pipeline means other developers cannot continue working => costs time & money
 - so we want to avoid breaking the master, as much as possible
 - we could use branches for each new feature, task or bugfix
-- once the work is reviewed and the pipeline is successful, the branch can be merged back to master
-- this also ensures that the master branch is all the time deployable (which is an important aspect of CD)
+- once the work was reviewed and the pipeline is successful, the branch can be merged back to the master branch
+- this also ensures that the master branch is all the time deployable (which is an essential aspect of CD)
 - there are many strategies for dealing with branches
 - one of the most known branching models is Gitflow
 - you are free to use which model works best for you 
 - just avoid working only with the master branch
-- we will simply create a new branch for each new change and stop pushing directly to master
+- we will simply create a new branch for each new change and stop pushing directly to the master branch
 - if we create a branch, all the jobs will run as normal
 - but we do not want to deploy to staging or production from a branch
 - we can set a job policy to run the deploy jobs only for the master branch: 
 
-only:
-  - master
+.. code-block:: yaml
+
+    only:
+      - master
 
 YOUR NOTES
-
 .............................................................
 
 .............................................................
@@ -258,7 +267,7 @@ YOUR NOTES
 Merge requests: Configuring Gitlab
 ----------------------------------
 
-- in order to implement our new workflow, we need to do a few settings for your project
+- to implement our new workflow, we need to do a few settings for your project
 - no longer allow pushing to master
     - go to Settings > Repository > Protected branches
     - set Allow to push to "No one"
@@ -302,15 +311,17 @@ Dynamic environments
 - we can automatically spin up a dynamic environment for each merge request
 - this allows us to review the changes on an actual system
 - we can also run more advanced tests if we want to
-- this can not only be a good thing for developers, but for testers or product owners / project managers and so on
+- this can not only be a good thing for developers but for testers or product owners/project managers and so on
 - we can make a dynamic environment by using predefined Gitlab variables
 - we can use the following variables
     - $CI_COMMIT_REF_NAME to have the branch name as the environment name
     - $CI_ENVIRONMENT_SLUG for a url-friendly environment name
 
-environment:
-    name: review/$CI_COMMIT_REF_NAME
-    url: https://instazone-$CI_ENVIRONMENT_SLUG.surge.sh
+.. code-block:: yaml
+
+    environment:
+        name: review/$CI_COMMIT_REF_NAME
+        url: https://instazone-$CI_ENVIRONMENT_SLUG.surge.sh
 
 
 YOUR NOTES
