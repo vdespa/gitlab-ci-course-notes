@@ -192,7 +192,7 @@ Running jobs in parallel
 - alpine images are only 5MB in size and are faster to download and start
 - we can use Gatsby to start a server from the production build (the public folder)
 - when we start a server with the website, we can run other kinds of tests
-- we use `gatsby server` to start a local server
+- we use `gatsby serve` to start a local server
 - we want to start a server with our website and check if it works
 - we can use curl to download a copy of the website using HTTP (similar to what a standard browser does)
 - pipes (|) are used to use the output from one command as the input for another
