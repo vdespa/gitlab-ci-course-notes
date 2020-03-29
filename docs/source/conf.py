@@ -18,11 +18,11 @@
 # -- Project information -----------------------------------------------------
 
 project = 'Gitlab CI Course Notes'
-copyright = '2019, Valentin Despa'
+copyright = '2019 - 2020, Valentin Despa'
 author = 'Valentin Despa'
 
 # The full version, including alpha/beta/rc tags
-release = 'June 2019'
+release = 'March 2020'
 
 
 # -- General configuration ---------------------------------------------------

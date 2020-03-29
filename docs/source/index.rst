@@ -14,6 +14,8 @@ Welcome to Gitlab CI Course Notes's documentation!
    1-introduction
    2-ci-cd-workflow
    3-gitlab-ci-fundamentals
+   4-yaml-basics
+   5-deploy-java-app
    99-online-course
 
 Indices and tables
