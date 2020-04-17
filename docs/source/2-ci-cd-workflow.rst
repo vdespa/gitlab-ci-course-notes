@@ -288,3 +288,11 @@ YOUR NOTES
 .............................................................
 
 .............................................................
+
+
+How does Surge use environment variables?
+-----------------------------------------
+
+- if you use a predefined name for the variable, Surge will automatically look for the variables and use them
+- this makes the configuration much easier
+- it also reduces the temptation of including credentails in the pipeline

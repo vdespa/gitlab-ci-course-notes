@@ -16,8 +16,6 @@ You will learn:
 - this course is focused on building pipelines
 - check the Resourced for links to articles and other video tutorials
 
-YOUR NOTES
-
 .............................................................
 
 .............................................................
@@ -45,8 +43,6 @@ What is an API?
 - an API can use used by a front-end application to display the data in the browser
 - work with the API by using Postman
 
-
-YOUR NOTES
 .............................................................
 
 .............................................................
@@ -68,7 +64,7 @@ Running the application in Postman
 - you will find the Postman collection attached to this lecture
 - can click on "Import" and select both the collection and the environment
 
-YOUR NOTES
+
 .............................................................
 
 .............................................................
@@ -85,7 +81,6 @@ Continuous Integration (CI) pipeline overview
 - the CI pipeline typically has a few stages: build, code quality, test, packaging the application for later use.
 - The purpose of the CI pipeline is to ensure that the artifact is releasable
 
-YOUR NOTES
 .............................................................
 
 .............................................................
@@ -103,7 +98,6 @@ YOUR NOTES
 - to run the build process locally, I will use a tool called Gradle, which is just a build tool
 - Gradle helps make the build process much simpler
 
-YOUR NOTES
 .............................................................
 
 .............................................................
@@ -120,7 +114,6 @@ YOUR NOTES
 - add build stage & job
 - publish artifact
 
-YOUR NOTES
 .............................................................
 
 .............................................................
@@ -135,7 +128,6 @@ Smoke test
 - if you were responsible for testing a computer, you will only push the power button and see if something appears on the screen
 - we will start the Java application and see if it works by calling the /health endpoint using cURL
 
-YOUR NOTES
 .............................................................
 
 .............................................................
@@ -143,8 +135,8 @@ YOUR NOTES
 .............................................................
 
 
-Continuous Deployment (CD) pipeline overview
---------------------------------------------
+CI/CD pipeline recap
+--------------------
 
 Now we have an artifact (or a package of software) and we are ready for deployment.
 
@@ -165,6 +157,12 @@ Which option makes more sense, it is up to you. For some of the reasons mentione
 
 The following lectures will show to use use Amazon AWS to deploy the Java application.
 
+.............................................................
+
+.............................................................
+
+.............................................................
+
 
 Brief introduction to Amazon Web Services (AWS)
 -----------------------------------------------
@@ -175,7 +173,6 @@ Brief introduction to Amazon Web Services (AWS)
 - a basic usage of many services is free in the first year
 - adding a debit/credit card is mandatory
 
-YOUR NOTES
 .............................................................
 
 .............................................................
@@ -193,7 +190,6 @@ Serverless computing with AWS Elastic Beanstalk
 - serverless architecture: you don't care about the hardware and software needed to run your application
 - using a serverless architecture is the easiest way to deploy an application in the cloud
 
-YOUR NOTES
 .............................................................
 
 .............................................................
@@ -208,7 +204,6 @@ Manually deploying a Java application to AWS Elastic Beanstalk
 - use the AWS console interface to upload the jar file
 - provide the jar file as a resource
 
-YOUR NOTES
 .............................................................
 
 .............................................................
@@ -222,7 +217,6 @@ How to deploy to AWS from GitLab CI
 - the goal is to avoid any manual interaction
 - AWS offers a CLI tool that can be used from GitLab CI
 
-YOUR NOTES
 .............................................................
 
 .............................................................
@@ -236,7 +230,6 @@ Getting started with AWS S3
 - AWS S3 is the main storage service for the entire AWS platform
 - we will use S3 to upload the artifact
 
-YOUR NOTES
 .............................................................
 
 .............................................................
@@ -250,8 +243,6 @@ GitLab Group settings
 - the GitLab group functionality is a way to organize similar projects into group
 - having a group allows you to configure environment variables that are available in multiple projects
 
-
-YOUR NOTES
 .............................................................
 
 .............................................................
@@ -268,7 +259,6 @@ How to upload a file to AWS S3 from GitLab CI
   - S3_BUCKET
 - upload the artifact to S3 using the copy command (aws s3 cp)
 
-YOUR NOTES
 .............................................................
 
 .............................................................
@@ -285,7 +275,142 @@ How to deploy a Java application to AWS Elastic Beanstalk using the AWS CLI
   - creating a new application version referencing the artifact from S3
   - updating the production environment with the latest application version 
 
-YOUR NOTES
+.............................................................
+
+.............................................................
+
+.............................................................
+
+.............................................................
+
+
+Create an application version
+-----------------------------
+
+- the Java application allows us to insert the application version in one of the info endpoints
+- this allows us to check which version is currently deployed
+
+.............................................................
+
+.............................................................
+
+.............................................................
+
+.............................................................
+
+
+Verify the application version after deployment
+-----------------------------------------------
+
+- we should ensure that the right application version was deployed
+- we can do this by checking the /info endpoint which will tell us the current application version
+
+.............................................................
+
+.............................................................
+
+.............................................................
+
+.............................................................
+
+
+Ensuring coding standards with tools for codestyle checking
+-----------------------------------------------------------
+
+- Most projects want to have a consistent code style and to follow some conventions
+- automated tools are used to assist with this task
+- some do static code analysis, as the inspection performed without actually running the code
+- other tools do a dynamic code analysis, which will actually run the code in order to perform the inspection
+- one simple one that can be used for Java projects is PMD
+- PMD is a static code analysis tool
+- PMD can help find unused variables, problematic code blocks and overall to enforce generally accepted best practices
+- PMD already has a large set of predefined rules but will also allow you to configure or add new rules, as needed
+
+
+.............................................................
+
+.............................................................
+
+.............................................................
+
+.............................................................
+
+
+Introduction to unit testing in CI pipelines
+--------------------------------------------
+
+- what is a unit test
+- unit tests are responsible for testing only single units of code, typically one class
+- the execution time is very fast and give instant feedback
+- use JUnit or similar
+- for Java projects, JUnit is the most popular framework for writing unit tests
+
+.............................................................
+
+.............................................................
+
+.............................................................
+
+.............................................................
+
+
+Unit test stage: Run JUnit tests with GitLab CI
+-----------------------------------------------
+
+- covers how to add execute JUnit tests
+- the JUnit XML report is publish as an artifact and recognized by GitLab CI
+
+.............................................................
+
+.............................................................
+
+.............................................................
+
+.............................................................
+
+
+How to structure a CI/CD pipeline in GitLab CI?
+-----------------------------------------------
+
+- when structuring a pipeline, you need to take into account multiple factors
+- what is the logical flow of the pipeline
+- which jobs can be grouped together and which not
+- run jobs that have a similar execution time in parallel
+- put jobs that are easy to run in the beginning (fail fast principle)
+
+.............................................................
+
+.............................................................
+
+.............................................................
+
+.............................................................
+
+
+API test stage: Run Postman API tests in GitLab CI
+--------------------------------------------------
+
+- for this application, API tests are the highest level of tests we can execute
+- you can use Postman to write tests
+- Newman is the CLI tool from Postman
+- Newman allows you to run Postman tests from the CLI
+
+.............................................................
+
+.............................................................
+
+.............................................................
+
+.............................................................
+
+
+GitLab Pages
+------------
+
+- allows you to publish HTML websites directly from a repository
+- great option for creating dashboards
+- you can publish HTML reports
+
 .............................................................
 
 .............................................................
